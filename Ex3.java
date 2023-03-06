@@ -1,4 +1,3 @@
-import java.awt.*;//color & graphics
 import javax.swing.*;//JFrame,Timer
 import java.awt.event.*;//ActionListener ,ActionEvent
 
