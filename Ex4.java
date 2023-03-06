@@ -41,7 +41,7 @@ public class Ex4 {
             ShapeEyes panelEyes = new ShapeEyes();
             ShapeHexa panelHexa = new ShapeHexa();
             ShapeAlpha panelAlpha = new ShapeAlpha();
-            // ShapeHexa panelHexa = new ShapeHexa();
+            ShapeCircle panelCircle = new ShapeCircle();
 
             // add all components
             frame.add(layout);
@@ -50,12 +50,14 @@ public class Ex4 {
             layout.add(panelHexa);
             layout.add(panelTree);
             layout.add(panelAlpha);
+            layout.add(panelCircle);
 
             // set all shapes invisible initially
             panelTree.setVisible(false);
             panelHexa.setVisible(false);
             panelEyes.setVisible(false);
             panelAlpha.setVisible(false);
+            panelCircle.setVisible(false);
 
             // add item listener on combobox
             comboBox.addItemListener(new ItemListener() {
@@ -67,13 +69,15 @@ public class Ex4 {
                         panelEyes.setVisible(false);
                         panelHexa.setVisible(false);
                         panelAlpha.setVisible(false);
+                        panelCircle.setVisible(false);
                         break;
                      }
                      case 2: { // if hexa is selected
                         panelTree.setVisible(false);
-                        panelHexa.setVisible(true); // only show patter shape hide rest
+                        panelHexa.setVisible(true); // only show hexa shape hide rest
                         panelEyes.setVisible(false);
                         panelAlpha.setVisible(false);
+                        panelCircle.setVisible(false);
 
                         break;
                      }
@@ -82,6 +86,8 @@ public class Ex4 {
                         panelHexa.setVisible(false);
                         panelEyes.setVisible(true);
                         panelAlpha.setVisible(false);
+                        panelCircle.setVisible(false);
+
                         // only show eye shape hide rest
                         break;
                      }
@@ -90,7 +96,18 @@ public class Ex4 {
                         panelHexa.setVisible(false);
                         panelEyes.setVisible(false);
                         panelAlpha.setVisible(true);
-                        // only show eye shape hide rest
+                        panelCircle.setVisible(false);
+
+                        // only show alpha shape hide rest
+                        break;
+                     }
+                     case 5: { // if circle is selected
+                        panelTree.setVisible(false);
+                        panelHexa.setVisible(false);
+                        panelEyes.setVisible(false);
+                        panelAlpha.setVisible(false);
+                        panelCircle.setVisible(true);
+                        // only show circle shape hide rest
                         break;
                      }
                      default: {
@@ -173,8 +190,7 @@ public class Ex4 {
       }
    }
 
-
-   //Eyes shape
+   // Eyes shape
    public class ShapeEyes extends JPanel {
       public ShapeEyes() {
       }
@@ -239,7 +255,7 @@ public class Ex4 {
       }
    }
 
-   //circle shape
+   // circle shape
    // Alpha shape
    public class ShapeCircle extends JPanel {
       public ShapeCircle() {
@@ -253,18 +269,14 @@ public class Ex4 {
       protected void paintComponent(Graphics g) {
          super.paintComponent(g);
          Graphics2D g2d = (Graphics2D) g.create();
-         g2d.drawLine(100, 100, 300, 100);
-         g2d.drawLine(150, 150, 300, 150);
-         g2d.drawLine(300, 100, 300, 150);
-         g2d.drawLine(100, 100, 100, 400);
-         g2d.drawLine(100, 100, 100, 400);
-         g2d.drawLine(150, 150, 150, 200);
-         g2d.drawLine(150, 200, 200, 200);
-         g2d.drawLine(200, 200, 200, 250);
-         g2d.drawLine(150, 250, 200, 250);
-         g2d.drawLine(150, 250, 150, 400);
-         g2d.drawLine(100, 400, 150, 400);
-
+         g2d.drawRect(100, 100, 200, 200);//
+         g2d.setColor(new Color(255,0,0));
+         g2d.fillOval(175, 100, 50, 50);// 3
+         g2d.fillOval(250, 175, 50, 50);// 2
+         g2d.fillOval(175, 250, 50, 50);// 4
+         g2d.fillOval(100, 175, 50, 50);// 1
+         g2d.setColor(new Color(0,0,255));
+         g2d.fillOval(150, 150, 100, 100);
       }
    }
 }
